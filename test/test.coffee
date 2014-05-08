@@ -1,14 +1,50 @@
-connect = require 'connect'
+connect   = require 'connect'
+alchemist = require 'alchemist-middleware'
 
 describe 'basic', ->
 
   it 'should be registered as middleware', ->
     (-> connect().use(pathologist())).should.not.throw()
 
-  it 'should modify a request body', (done) ->
-    app = connect().use(pathologist("middleware'd!"))
+describe 'routing', ->
+  describe 'route match', ->
+    before ->
+      @app = connect()
+        .use(
+          pathologist(path.join(base_path, 'basic'),
+            '/admin/**':  '/admin.html',
+            '**':         '/index.html'
+          )
+        ).use(alchemist(path.join(base_path, 'basic')))
 
-    chai.request(app).get('/').res (res) ->
-      res.should.have.status(500)
-      res.text.should.equal("middleware'd!")
-      done()
+    it 'should match on the namespaced admin route', (done) ->
+      chai.request(@app).get('/admin/dashboard').res (res) ->
+        res.should.have.status(200)
+        res.text.should.equal('<p>hello world from admin!</p>\n')
+        done()
+
+    it 'should match all other routes due to ** globstar', (done) ->
+      chai.request(@app).get('/fizz/buzz').res (res) ->
+        res.should.have.status(200)
+        res.text.should.equal('<p>hello world from index!</p>\n')
+        done()
+
+    it 'should match on the full globstar route', (done) ->
+      chai.request(@app).get('/dashboard').res (res) ->
+        res.should.have.status(200)
+        res.text.should.equal('<p>hello world from index!</p>\n')
+        done()
+
+  describe 'no match', ->
+    it 'should pass it to the next middleware unmodified', ->
+      app = connect()
+        .use(
+          pathologist(path.join(base_path, 'basic'),
+            '/admin/**':  '/admin.html'
+          )
+        ).use(alchemist(path.join(base_path, 'basic')))
+
+      chai.request(app).get('/index.html').res (res) ->
+        res.should.have.status(200)
+        res.text.should.equal('<p>hello world from index!</p>\n')
+        done()

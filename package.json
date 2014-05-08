@@ -1,8 +1,8 @@
 {
-  "name": "pathologist",
-  "version": "0.0.0",
+  "name": "pathologist-middleware",
+  "version": "0.0.1",
   "author": "Carrot Creative <dev@carrotcreative.com>",
-  "description": "Middleware for custom routes",
+  "description": "Handling custom static routes since 1967",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
     "coffeelint": "*",
     "istanbul": "*",
     "mocha-lcov-reporter": "*",
-    "coffee-script": "1.7.x"
+    "coffee-script": "1.7.x",
+    "alchemist-middleware": "0.0.2"
   },
   "scripts": {
     "test": "npm run lint && mocha",
@@ -26,5 +27,9 @@
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "send": "^0.3.0",
+    "minimatch": "^0.2.14"
   }
 }
