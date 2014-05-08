@@ -10,7 +10,7 @@ describe 'routing', ->
     @app = connect().use(
       pathologist(path.join(base_path, 'basic'),
         '/admin/**':  'admin.html',
-        '**':        'index.html'
+        '**':         'index.html'
       )
     )
 
