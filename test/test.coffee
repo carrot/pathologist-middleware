@@ -1,4 +1,5 @@
-connect = require 'connect'
+connect   = require 'connect'
+alchemist = require 'alchemist-middleware'
 
 describe 'basic', ->
 
@@ -7,12 +8,15 @@ describe 'basic', ->
 
 describe 'routing', ->
   before ->
-    @app = connect().use(
-      pathologist(path.join(base_path, 'basic'),
-        '/admin/**':  'admin.html',
-        '**':         'index.html'
+    @app = connect()
+      .use(
+        pathologist(path.join(base_path, 'basic'),
+          '/admin/**':  '/admin.html',
+          '**':         '/index.html'
+        )
+      ).use(
+        alchemist(path.join(base_path, 'basic'))
       )
-    )
 
   it 'should match on the namespaced admin route', (done) ->
     chai.request(@app).get('/admin/dashboard').res (res) ->

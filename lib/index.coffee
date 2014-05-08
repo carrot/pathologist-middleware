@@ -8,6 +8,6 @@ module.exports = (base, routes) ->
 
   return (req, res, next) ->
     for k, v of routes when minimatch(req.url, k)
-      res.statusCode = 200
-      return send(req, path.resolve(base, v)).pipe(res)
+      req.url = v
+      return next()
     next()

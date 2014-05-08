@@ -12,13 +12,15 @@ Often when building a static app, you want to serve multiple routes with the sam
 
 Pathologist is an easy to use [connect](https://github.com/senchalabs/connect) middleware for bringing your single page apps to life. You can define routes with supported [globstar](https://github.com/isaacs/node-glob) matching to serve your static files.
 
+Pathologist simply rewrites the request url to a new static file path. It ___does not___ serve the static file for you, so you will need to use your preferred static server middleware with pathologist. We recommend [alchemist](https://github.com/carrot/alchemist-middleware).
+
 ### Installation
 
 `$ npm install pathologist-middleware --save`
 
 ### Usage
 
-Pathologist accepts an options object which takes globstar-compatible paths as keys and file paths as values. Routes are matched in the order they are defined in the object. Here's an example that serves an admin client on any URLs starting with `/admin`, and serves the user client on all other routes.
+Pathologist accepts an options object which takes globstar-compatible paths as keys and a static file path as values. Routes are matched in the order they are defined in the object. Here's an example that serves an admin client on any URLs starting with `/admin`, and serves the user client on all other routes.
 
 ```javascript
 var http = require('http'),
@@ -27,8 +29,8 @@ var http = require('http'),
 
 var app = connect().use(
   pathologist({
-    '/admin/**/*': 'admin.html',
-    '/**': 'index.html'
+    '/admin/**/*': '/admin.html',
+    '/**': '/index.html'
   })
 );
 ```

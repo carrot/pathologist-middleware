@@ -17,7 +17,8 @@
     "coffeelint": "*",
     "istanbul": "*",
     "mocha-lcov-reporter": "*",
-    "coffee-script": "1.7.x"
+    "coffee-script": "1.7.x",
+    "alchemist-middleware": "0.0.2"
   },
   "scripts": {
     "test": "npm run lint && mocha",
