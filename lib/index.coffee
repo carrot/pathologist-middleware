@@ -1,5 +1,4 @@
 minimatch = require 'minimatch'
-send      = require 'send'
 
 module.exports = (base, routes) ->
   if typeof base isnt 'string'
