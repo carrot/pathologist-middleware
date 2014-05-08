@@ -1,8 +1,8 @@
 {
-  "name": "pathologist",
-  "version": "0.0.0",
+  "name": "pathologist-middleware",
+  "version": "0.0.1",
   "author": "Carrot Creative <dev@carrotcreative.com>",
-  "description": "Middleware for custom routes",
+  "description": "Handling custom static routes since 1967",
   "license": "MIT",
   "repository": {
     "type": "git",
