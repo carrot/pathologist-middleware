@@ -18,12 +18,13 @@
     "istanbul": "*",
     "mocha-lcov-reporter": "*",
     "coffee-script": "1.7.x",
-    "alchemist-middleware": "0.0.2"
+    "alchemist-middleware": "0.0.2",
+    "coveralls": "^2.10.0"
   },
   "scripts": {
     "test": "npm run lint && mocha",
     "lint": "find lib/ -name '*.coffee' | xargs coffeelint",
-    "coverage": "make build; istanbul cover _mocha --report html -- -R spec && open coverage/index.html && make unbuild"
+    "coverage": "make build; istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage && make unbuild"
   },
   "engines": {
     "node": ">=0.10.0"
