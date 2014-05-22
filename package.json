@@ -18,7 +18,7 @@
     "istanbul": "*",
     "mocha-lcov-reporter": "*",
     "coffee-script": "1.7.x",
-    "alchemist-middleware": "0.0.2",
+    "alchemist-middleware": "0.0.4",
     "coveralls": "^2.10.0"
   },
   "scripts": {
@@ -30,6 +30,6 @@
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "minimatch": "^0.2.14"
+    "minimatch": "0.3.x"
   }
 }
