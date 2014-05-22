@@ -36,7 +36,7 @@ describe 'routing', ->
         done()
 
   describe 'no match', ->
-    it 'should pass it to the next middleware unmodified', ->
+    it 'should pass it to the next middleware unmodified', (done) ->
       app = connect()
         .use(
           pathologist(path.join(base_path, 'basic'),
@@ -47,4 +47,41 @@ describe 'routing', ->
       chai.request(app).get('/index.html').res (res) ->
         res.should.have.status(200)
         res.text.should.equal('<p>hello world from index!</p>\n')
+        done()
+
+  describe 'assets', ->
+
+    before ->
+      @app = connect()
+              .use(
+                pathologist(path.join(base_path, 'basic'),
+                  '**':  '/index.html'
+                )
+              ).use(alchemist(path.join(base_path, 'basic')))
+
+    it 'should serve index.html directly', (done) ->
+      chai.request(@app).get('/index.html').res (res) ->
+        res.should.have.status(200)
+        res.should.be.html
+        res.text.should.equal('<p>hello world from index!</p>\n')
+        done()
+
+    it 'should serve index for random request', (done) ->
+      chai.request(@app).get('/foobar').res (res) ->
+        res.should.have.status(200)
+        res.should.be.html
+        res.text.should.equal('<p>hello world from index!</p>\n')
+        done()
+
+    it 'should serve style.css instead of index', (done) ->
+      chai.request(@app).get('/style.css').res (res) ->
+        res.should.have.status(200)
+        res.should.not.be.html
+        res.text.should.equal('body { background: red; }\n')
+        done()
+
+    it 'should serve image instead of index', (done) ->
+      chai.request(@app).get('/swanson.jpg').res (res) ->
+        res.should.have.status(200)
+        res.should.not.be.html
         done()
