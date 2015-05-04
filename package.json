@@ -23,13 +23,13 @@
   },
   "scripts": {
     "test": "npm run lint && mocha",
-    "lint": "find lib/ -name '*.coffee' | xargs coffeelint",
+    "lint": "find lib -name '*.coffee' | xargs coffeelint",
     "coverage": "make build; istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage && make unbuild"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "dependencies": {
-    "minimatch": "^0.2.14"
+    "minimatch": "2.0.x"
   }
 }
