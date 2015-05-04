@@ -18,25 +18,25 @@ describe 'routing', ->
         ).use(alchemist(path.join(base_path, 'basic')))
 
     it 'should match on the namespaced admin route', (done) ->
-      chai.request(@app).get('/admin/dashboard').res (res) ->
+      chai.request(@app).get('/admin/dashboard').end (err, res) ->
         res.should.have.status(200)
         res.text.should.equal('<p>hello world from admin!</p>\n')
         done()
 
     it 'should match all other routes due to ** globstar', (done) ->
-      chai.request(@app).get('/fizz/buzz').res (res) ->
+      chai.request(@app).get('/fizz/buzz').end (err, res) ->
         res.should.have.status(200)
         res.text.should.equal('<p>hello world from index!</p>\n')
         done()
 
     it 'should match on the full globstar route', (done) ->
-      chai.request(@app).get('/dashboard').res (res) ->
+      chai.request(@app).get('/dashboard').end (err, res) ->
         res.should.have.status(200)
         res.text.should.equal('<p>hello world from index!</p>\n')
         done()
 
   describe 'no match', ->
-    it 'should pass it to the next middleware unmodified', ->
+    it 'should pass it to the next middleware unmodified', (done) ->
       app = connect()
         .use(
           pathologist(path.join(base_path, 'basic'),
@@ -44,7 +44,7 @@ describe 'routing', ->
           )
         ).use(alchemist(path.join(base_path, 'basic')))
 
-      chai.request(app).get('/index.html').res (res) ->
+      chai.request(app).get('/index.html').end (err, res) ->
         res.should.have.status(200)
         res.text.should.equal('<p>hello world from index!</p>\n')
         done()
