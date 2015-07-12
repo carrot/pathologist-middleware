@@ -1,6 +1,6 @@
 {
   "name": "pathologist-middleware",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Carrot Creative <dev@carrotcreative.com>",
   "description": "Handling custom static routes since 1967",
   "license": "MIT",
