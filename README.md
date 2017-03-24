@@ -2,8 +2,7 @@
 
 [![npm](http://img.shields.io/npm/v/pathologist-middleware.svg?style=flat)](https://badge.fury.io/js/pathologist-middleware) [![tests](http://img.shields.io/travis/carrot/pathologist-middleware/master.svg?style=flat)](https://travis-ci.org/carrot/pathologist-middleware)
 [![coverage](http://img.shields.io/coveralls/carrot/pathologist-middleware.svg?style=flat)](https://coveralls.io/r/carrot/pathologist-middleware)
-[![dependencies](http://img.shields.io/gemnasium/carrot/pathologist-middleware.svg?style=flat)](https://gemnasium.com/carrot/pathologist-middleware)
-[![devDependencies](https://img.shields.io/david/dev/carrot/pathologist-middleware.svg)](https://gemnasium.com/carrot/pathologist-middleware)
+[![dependencies](http://img.shields.io/david/carrot/pathologist-middleware.svg?style=flat)](https://david-dm.org/carrot/pathologist-middleware)
 
 Finding the right path since 1967
 
