@@ -1,7 +1,7 @@
 {
   "name": "pathologist-middleware",
   "description": "Handling custom static routes since 1967",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Carrot Creative <dev@carrotcreative.com>",
   "ava": {
     "verbose": "true"
