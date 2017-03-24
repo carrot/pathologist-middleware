@@ -5,12 +5,7 @@
 [![dependencies](http://img.shields.io/gemnasium/carrot/pathologist-middleware.svg?style=flat)](https://gemnasium.com/carrot/pathologist-middleware)
 [![devDependencies](https://img.shields.io/david/dev/carrot/pathologist-middleware.svg)](https://gemnasium.com/carrot/pathologist-middleware)
 
-
-
-
 Finding the right path since 1967
-
-> **Note:** This project is in early development, and versioning is a little different. [Read this](http://markup.im/#q4_cRZ1Q) for more details.
 
 ### Why should you care?
 

@@ -1,6 +1,5 @@
 test
-src
-Makefile
 contributing.md
 .editorconfig
 .travis.yml
+yarn.lock

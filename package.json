@@ -1,35 +1,38 @@
 {
   "name": "pathologist-middleware",
+  "description": "Handling custom static routes since 1967",
   "version": "0.1.0",
   "author": "Carrot Creative <dev@carrotcreative.com>",
-  "description": "Handling custom static routes since 1967",
+  "ava": {
+    "verbose": "true"
+  },
+  "dependencies": {
+    "micromatch": "^2.3.11"
+  },
+  "devDependencies": {
+    "alchemist-middleware": "^0.1.0",
+    "ava": "^0.18.2",
+    "connect": "^3.6.0",
+    "coveralls": "^2.12.0",
+    "istanbul": "^0.4.5",
+    "nyc": "^10.1.2",
+    "snazzy": "^6.0.0",
+    "standard": "^9.0.2",
+    "supertest": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
   "license": "MIT",
+  "main": "lib",
   "repository": {
     "type": "git",
     "url": "https://github.com/carrot/pathologist-middleware.git"
   },
-  "main": "lib",
-  "dependencies": {
-    "minimatch": "2.0.x"
-  },
-  "devDependencies": {
-    "alchemist-middleware": "0.0.x",
-    "chai": "3.x",
-    "chai-http": "1.0.x",
-    "coffee-script": "1.9.x",
-    "coffeelint": "1.x",
-    "connect": "3.3.x",
-    "coveralls": "2.11.x",
-    "istanbul": "0.3.x",
-    "mocha": "2.2.x",
-    "mocha-lcov-reporter": "0.0.x"
-  },
   "scripts": {
-    "test": "npm run lint && mocha",
-    "lint": "find lib -name '*.coffee' | xargs coffeelint",
-    "coverage": "make build; istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage && make unbuild"
-  },
-  "engines": {
-    "node": ">=0.10.0"
+    "coverage": "nyc --reporter=html ava && open coverage/index.html",
+    "coveralls": "nyc --reporter=lcov ava && cat ./coverage/lcov.info | coveralls",
+    "lint": "standard --verbose | snazzy",
+    "test": "ava"
   }
 }
